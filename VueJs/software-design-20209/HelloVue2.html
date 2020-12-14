@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello Vue!!</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <div id="app">
+      <!-- バインドとクリックイベント -->
+      <p>Counter: {{count}}</p>
+      <a
+        target="_blank"
+        v-bind:href="'https://gihyo.jp/contentslist?start=2020/04/' + ('0' + count).slice(-2)"
+      >
+        04/{{('0' + count).slice(-2)}}
+      </a>
+      <div>
+        <button v-on:click="increment()">+1</button>
+        <button v-on:click="increment(5)">+5</button>
+      </div>
+      <!-- ループによるアイテムの表示 -->
+      <ul>
+        <li v-for="item in list">{{item}}</li>
+      </ul>
+      <button v-on:click="addItem">addItem</button>
+      <!-- オブジェクトの表示 -->
+      <p>userオブジェクト: {{user}}</p>
+      <p>名前: {{user.name}}, メール: {{user.email}}</p>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data() {
+          return {
+            count: 0,
+            list: [0, 2, 4],
+            user: {
+              name: "Hirayama",
+              email: "hirayama@example.com",
+            },
+          };
+        },
+        methods: {
+          increment(val = 1) {
+            this.count += val;
+          },
+          addItem() {
+            this.list.push(this.count);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
