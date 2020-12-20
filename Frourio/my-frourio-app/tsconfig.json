@@ -1,0 +1,18 @@
+{
+		"extends": "@tsconfig/svelte/tsconfig.json",
+		"compilerOptions": {
+			"lib": ["DOM", "ES2017", "WebWorker"],
+			"experimentalDecorators": true,
+			"emitDecoratorMetadata": true,
+			"importsNotUsedAsValues": "remove",
+			"strictNullChecks": true,
+			"baseUrl": ".",
+			"paths": {
+				"~/*": ["./*"],
+				"$/*": ["./server/*"],
+				"$prisma/*": ["./server/node_modules/.prisma/*"]
+			}
+		},
+		"include": ["src/**/*", "src/node_modules/**/*", "server/api/$api.ts"],
+		"exclude": ["node_modules/*", "__sapper__/*", "static/*"]
+	}
