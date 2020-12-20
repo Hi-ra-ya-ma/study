@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll View</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <div id="app">
+      <button v-on:click="addLeftItem">addLeftItem</button>
+      <button v-on:click="addRightItem">addRightItem</button>
+      <div class="stage">
+        <div class="container left">
+          <ul>
+            <li v-for="item1 in leftItemList">{{item1}}</li>
+          </ul>
+        </div>
+        <div class="container right">
+          <ul>
+            <li v-for="item2 in rightItemList">{{item2}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data() {
+          return {
+            leftItemList: ["Text1"],
+            rightItemList: ["Text2"],
+          };
+        },
+        methods: {
+          addLeftItem() {
+            this.leftItemList.push("Text1");
+          },
+          addRightItem() {
+            this.rightItemList.push("Text2");
+          },
+        },
+      });
+    </script>
+    <style scoped>
+      .stage {
+        display: flex;
+      }
+      .container {
+        height: 100;
+        background-color: antiquewhite;
+      }
+      .left {
+        width: 20%;
+      }
+
+      .righr {
+        width: 80%;
+      }
+    </style>
+  </body>
+</html>
